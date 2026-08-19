@@ -235,16 +235,8 @@ a {
     padding: 95px 0 90px;
 
     background:
-        radial-gradient(
-            circle at 85% 25%,
-            #dbeafe 0,
-            transparent 30%
-        ),
-        linear-gradient(
-            135deg,
-            #ffffff,
-            #f1f6ff
-        );
+        radial-gradient(circle at 85% 25%, #dbeafe 0, transparent 30%),
+        linear-gradient(135deg, #ffffff, #f1f6ff);
 }
 
 .hero-content {
