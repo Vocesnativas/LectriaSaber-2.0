@@ -5,22 +5,26 @@
 ===================================================== */
 
 :root {
-    --azul: #2563eb;
-    --azul-oscuro: #173b8f;
-    --azul-claro: #eaf2ff;
+    --verde: #20C997;
+    --verde-oscuro: #11966F;
+    --verde-claro: #DFF8EE;
+    --verde-suave: #F2FCF8;
 
-    --verde: #10b981;
-    --amarillo: #f59e0b;
-    --rojo: #ef4444;
+    --azul: #2563EB;
+    --azul-oscuro: #173B8F;
+    --azul-claro: #EAF2FF;
 
-    --fondo: #f6f9ff;
-    --blanco: #ffffff;
+    --amarillo: #F59E0B;
+    --rojo: #EF4444;
+
+    --fondo: #F7FFFB;
+    --blanco: #FFFFFF;
     --texto: #172033;
-    --texto-suave: #64748b;
+    --texto-suave: #64748B;
 
-    --borde: #e2e8f0;
+    --borde: #DCEFE7;
 
-    --sombra: 0 12px 30px rgba(23, 32, 51, 0.08);
+    --sombra: 0 12px 30px rgba(17, 150, 111, 0.10);
 
     --radio: 20px;
 }
