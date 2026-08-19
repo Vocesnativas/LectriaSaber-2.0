@@ -1421,3 +1421,53 @@ a {
         font-size: 16px;
     }
 }
+/* =====================================================
+   AJUSTE FINAL DE TARJETAS Y BOTONES
+===================================================== */
+
+.info-card,
+.level-card,
+.skill-card,
+.saber-card,
+.plan-card {
+    height: 100%;
+}
+
+.info-card,
+.level-card,
+.skill-card,
+.saber-card,
+.plan-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.level-card .card-btn,
+.saber-card button,
+.plan-card .plan-btn {
+    margin-top: auto;
+}
+
+.level-card p,
+.saber-card p {
+    flex-grow: 1;
+}
+
+.plan-card {
+    min-height: 330px;
+}
+
+.card-btn,
+.saber-card button,
+.plan-btn {
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.card-btn:hover,
+.saber-card button:hover,
+.plan-btn:hover {
+    transform: translateY(-2px);
+}
