@@ -234,9 +234,12 @@ a {
 .hero {
     position: relative;
 
+    main {
     margin: 0;
+    padding: 0;
+}
 
-    padding: 35px 0 70px;
+    padding: 20px 0 70px;
 
     background:
         radial-gradient(
