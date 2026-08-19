@@ -9,9 +9,9 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("LectriaSaber 2.0 iniciado correctamente 🚀");
 
 
-    /* =================================================
+    /* =====================================================
        MENÚ MÓVIL
-    ================================================= */
+    ===================================================== */
 
     const menuBtn = document.getElementById("menu-btn");
     const nav = document.querySelector(".nav");
@@ -24,16 +24,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const abierto = nav.classList.contains("active");
 
-            menuBtn.textContent = abierto ? "✕" : "☰";
+            menuBtn.setAttribute(
+                "aria-label",
+                abierto ? "Cerrar menú" : "Abrir menú"
+            );
 
+            menuBtn.textContent = abierto ? "✕" : "☰";
         });
 
 
         /* Cerrar menú al seleccionar una opción */
 
-        const enlacesNav = nav.querySelectorAll("a");
+        const enlacesMenu = nav.querySelectorAll("a");
 
-        enlacesNav.forEach((enlace) => {
+        enlacesMenu.forEach((enlace) => {
 
             enlace.addEventListener("click", () => {
 
@@ -41,6 +45,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 menuBtn.textContent = "☰";
 
+                menuBtn.setAttribute(
+                    "aria-label",
+                    "Abrir menú"
+                );
             });
 
         });
@@ -48,13 +56,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* =================================================
+    /* =====================================================
        NAVEGACIÓN SUAVE
-    ================================================= */
+    ===================================================== */
 
-    const enlaces = document.querySelectorAll('a[href^="#"]');
+    const enlacesInternos = document.querySelectorAll(
+        'a[href^="#"]'
+    );
 
-    enlaces.forEach((enlace) => {
+    enlacesInternos.forEach((enlace) => {
 
         enlace.addEventListener("click", (evento) => {
 
@@ -66,35 +76,50 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const elemento = document.querySelector(destino);
 
-            if (!elemento) {
-                return;
+            if (elemento) {
+
+                evento.preventDefault();
+
+                const alturaHeader =
+                    document.querySelector(".header")?.offsetHeight || 0;
+
+                const posicion =
+                    elemento.getBoundingClientRect().top +
+                    window.scrollY -
+                    alturaHeader;
+
+                window.scrollTo({
+                    top: posicion,
+                    behavior: "smooth"
+                });
+
             }
-
-            evento.preventDefault();
-
-            elemento.scrollIntoView({
-                behavior: "smooth",
-                block: "start"
-            });
 
         });
 
     });
 
 
-    /* =================================================
-       BOTONES DE TARJETAS
-    ================================================= */
+    /* =====================================================
+       BOTONES DE LECTURA
+    ===================================================== */
 
-    const botonesTarjetas = document.querySelectorAll(".card-btn");
+    const botonesLectura =
+        document.querySelectorAll(".level-card .card-btn");
 
-    botonesTarjetas.forEach((boton) => {
+    botonesLectura.forEach((boton, indice) => {
 
         boton.addEventListener("click", () => {
 
+            const mensajes = [
+                "📖 Aventuras con las letras estará disponible muy pronto.",
+                "📚 Historias que cobran vida estará disponible muy pronto.",
+                "📖 La Biblioteca de LectriaSaber estará disponible muy pronto."
+            ];
+
             mostrarMensaje(
-                "📚 Próximamente",
-                "Estamos preparando nuevas actividades para esta sección."
+                mensajes[indice] ||
+                "📚 Esta sección estará disponible próximamente."
             );
 
         });
@@ -102,19 +127,19 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-    /* =================================================
-       BOTONES DE PRUEBAS SABER
-    ================================================= */
+    /* =====================================================
+       BOTONES PRUEBAS SABER
+    ===================================================== */
 
-    const botonesSaber = document.querySelectorAll(".saber-card button");
+    const botonesSaber =
+        document.querySelectorAll(".saber-card button");
 
     botonesSaber.forEach((boton) => {
 
         boton.addEventListener("click", () => {
 
             mostrarMensaje(
-                "🎯 Ruta Saber",
-                "Los simulacros y actividades de esta sección estarán disponibles próximamente."
+                "🎯 Esta prueba estará disponible próximamente en LectriaSaber 2.0."
             );
 
         });
@@ -122,72 +147,77 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-    /* =================================================
-       MENSAJE MODAL
-    ================================================= */
+    /* =====================================================
+       BOTONES DE PLANES
+    ===================================================== */
 
-    function mostrarMensaje(titulo, texto) {
+    const botonesPlanes =
+        document.querySelectorAll(".plan-btn");
 
-        const modalExistente = document.querySelector(".modal-mensaje");
+    botonesPlanes.forEach((boton, indice) => {
 
-        if (modalExistente) {
-            modalExistente.remove();
-        }
+        boton.addEventListener("click", () => {
 
+            if (indice === 0) {
 
-        const modal = document.createElement("div");
+                mostrarMensaje(
+                    "🆓 El plan Gratis te permitirá comenzar a explorar LectriaSaber 2.0."
+                );
 
-        modal.className = "modal-mensaje";
+            } else if (indice === 1) {
 
+                mostrarMensaje(
+                    "⭐ El plan Plus estará disponible próximamente."
+                );
 
-        modal.innerHTML = `
+            } else if (indice === 2) {
 
-            <div class="modal-contenido">
+                mostrarMensaje(
+                    "👨‍🏫 El espacio Docente estará disponible próximamente."
+                );
 
-                <button
-                    class="modal-cerrar"
-                    aria-label="Cerrar"
-                >
-                    ✕
-                </button>
+            } else {
 
-                <div class="modal-icono">
-                    🦊
-                </div>
+                mostrarMensaje(
+                    "🏫 El plan Institucional estará disponible próximamente."
+                );
 
-                <h2>${titulo}</h2>
+            }
 
-                <p>${texto}</p>
+        });
 
-                <button class="modal-ok">
-                    Entendido
-                </button>
-
-            </div>
-
-        `;
+    });
 
 
-        document.body.appendChild(modal);
+    /* =====================================================
+       BOTÓN ESPACIO DOCENTE
+    ===================================================== */
 
+    const botonDocente =
+        document.querySelector(".teacher-info .btn");
 
-        const cerrar = () => {
-            modal.remove();
-        };
+    if (botonDocente) {
 
+        botonDocente.addEventListener("click", () => {
 
-        modal.querySelector(".modal-cerrar")
-            .addEventListener("click", cerrar);
+            const planes =
+                document.getElementById("planes");
 
+            if (planes) {
 
-        modal.querySelector(".modal-ok")
-            .addEventListener("click", cerrar);
+                const alturaHeader =
+                    document.querySelector(".header")?.offsetHeight || 0;
 
+                const posicion =
+                    planes.getBoundingClientRect().top +
+                    window.scrollY -
+                    alturaHeader;
 
-        modal.addEventListener("click", (evento) => {
+                window.scrollTo({
+                    top: posicion,
+                    behavior: "smooth"
+                });
 
-            if (evento.target === modal) {
-                cerrar();
             }
 
         });
@@ -195,18 +225,146 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* =================================================
-       CERRAR MODAL CON ESC
-    ================================================= */
+    /* =====================================================
+       INTERACCIÓN DE LETRÍN
+    ===================================================== */
 
-    document.addEventListener("keydown", (evento) => {
+    const mascot =
+        document.querySelector(".mascot");
 
-        if (evento.key === "Escape") {
+    const mascotCard =
+        document.querySelector(".mascot-card");
 
-            const modal = document.querySelector(".modal-mensaje");
+    if (mascot && mascotCard) {
 
-            if (modal) {
-                modal.remove();
+        mascot.style.cursor = "pointer";
+
+        mascot.addEventListener("click", () => {
+
+            mostrarMensaje(
+                "🦊 ¡Hola! Soy Letrín. Vamos a descubrir juntos el maravilloso mundo de las palabras."
+            );
+
+        });
+
+    }
+
+
+    /* =====================================================
+       MENSAJE GENERAL
+    ===================================================== */
+
+    function mostrarMensaje(texto) {
+
+        const mensajeAnterior =
+            document.querySelector(".lectria-mensaje");
+
+        if (mensajeAnterior) {
+            mensajeAnterior.remove();
+        }
+
+
+        const mensaje =
+            document.createElement("div");
+
+        mensaje.className = "lectria-mensaje";
+
+        mensaje.textContent = texto;
+
+
+        mensaje.style.position = "fixed";
+        mensaje.style.left = "50%";
+        mensaje.style.bottom = "25px";
+        mensaje.style.transform = "translateX(-50%)";
+
+        mensaje.style.width = "min(90%, 520px)";
+
+        mensaje.style.padding = "16px 20px";
+
+        mensaje.style.background = "#172554";
+        mensaje.style.color = "#ffffff";
+
+        mensaje.style.borderRadius = "14px";
+
+        mensaje.style.textAlign = "center";
+
+        mensaje.style.fontWeight = "700";
+
+        mensaje.style.boxShadow =
+            "0 15px 35px rgba(0,0,0,0.20)";
+
+        mensaje.style.zIndex = "9999";
+
+        mensaje.style.animation =
+            "mensajeEntrada 0.3s ease";
+
+
+        document.body.appendChild(mensaje);
+
+
+        setTimeout(() => {
+
+            mensaje.style.opacity = "0";
+
+            mensaje.style.transition =
+                "opacity 0.3s ease";
+
+            setTimeout(() => {
+
+                mensaje.remove();
+
+            }, 300);
+
+        }, 3500);
+
+    }
+
+
+    /* =====================================================
+       ANIMACIÓN DE MENSAJES
+    ===================================================== */
+
+    const estilo =
+        document.createElement("style");
+
+    estilo.textContent = `
+
+        @keyframes mensajeEntrada {
+
+            from {
+                opacity: 0;
+                transform:
+                    translate(-50%, 20px);
+            }
+
+            to {
+                opacity: 1;
+                transform:
+                    translate(-50%, 0);
+            }
+
+        }
+
+    `;
+
+    document.head.appendChild(estilo);
+
+
+    /* =====================================================
+       CERRAR MENÚ SI SE AMPLÍA LA VENTANA
+    ===================================================== */
+
+    window.addEventListener("resize", () => {
+
+        if (
+            window.innerWidth > 760 &&
+            nav
+        ) {
+
+            nav.classList.remove("active");
+
+            if (menuBtn) {
+                menuBtn.textContent = "☰";
             }
 
         }
