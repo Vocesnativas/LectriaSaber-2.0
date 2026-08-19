@@ -135,30 +135,22 @@ a {
     flex-shrink: 0;
 }
 
-.logo-icon {
-    width: 45px;
-    height: 45px;
-
-    display: grid;
-    place-items: center;
-
-    background: var(--azul-claro);
-
-    border-radius: 14px;
-
-    font-size: 24px;
+.logo > span:last-child {
+    display: flex;
+    align-items: center;
+    gap: 6px;
 }
 
 .logo strong {
-    display: block;
+    display: inline-block;
 }
 
 .logo small {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 
-    margin-left: 6px;
-
-    padding: 3px 7px;
+    padding: 4px 7px;
 
     background: var(--azul);
     color: white;
@@ -169,7 +161,6 @@ a {
     font-weight: 900;
 
     line-height: 1;
-    vertical-align: middle;
 }
 
 /* =====================================================
