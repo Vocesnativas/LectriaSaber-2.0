@@ -20,25 +20,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
         menuBtn.addEventListener("click", () => {
 
-            nav.classList.toggle("active");
+            const abierto = nav.classList.toggle("active");
 
-            const abierto = nav.classList.contains("active");
+            menuBtn.textContent = abierto ? "✕" : "☰";
 
             menuBtn.setAttribute(
                 "aria-label",
                 abierto ? "Cerrar menú" : "Abrir menú"
             );
 
-            menuBtn.textContent = abierto ? "✕" : "☰";
-
         });
 
 
-        /* Cerrar menú al seleccionar una opción */
-
-        const enlacesMenu = nav.querySelectorAll("a");
-
-        enlacesMenu.forEach((enlace) => {
+        nav.querySelectorAll("a").forEach((enlace) => {
 
             enlace.addEventListener("click", () => {
 
@@ -59,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =================================================
-       CERRAR MENÚ AL CAMBIAR A ESCRITORIO
+       RESPONSIVE — CERRAR MENÚ
     ================================================= */
 
     window.addEventListener("resize", () => {
@@ -81,12 +75,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =================================================
-       BOTONES "EXPLORAR" Y "VER LECTURAS"
+       BOTONES DE LECTURA
     ================================================= */
 
-    const botonesLectura = document.querySelectorAll(
-        ".card-btn"
-    );
+    const botonesLectura = document.querySelectorAll(".card-btn");
 
     botonesLectura.forEach((boton) => {
 
@@ -94,7 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             mostrarMensaje(
                 "📖 Próximamente",
-                "Estamos preparando nuevas lecturas, cuentos y actividades para LectriaSaber 2.0."
+                "Estamos preparando cuentos, lecturas, actividades y experiencias interactivas para LectriaSaber 2.0."
             );
 
         });
@@ -103,20 +95,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =================================================
-       BOTONES PRUEBAS SABER
+       PRUEBAS SABER
     ================================================= */
 
-    const botonesSaber = document.querySelectorAll(
-        ".saber-card button"
-    );
+    const botonesSaber =
+        document.querySelectorAll(".saber-card button");
 
     botonesSaber.forEach((boton) => {
 
         boton.addEventListener("click", () => {
 
             mostrarMensaje(
-                "🎯 Pruebas Saber",
-                "Esta sección estará disponible próximamente con actividades y preguntas de práctica."
+                "🎯 Ruta Pruebas Saber",
+                "Esta sección estará disponible próximamente con actividades de práctica, comprensión lectora y preguntas tipo Saber."
             );
 
         });
@@ -125,12 +116,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =================================================
-       BOTONES DE PLANES
+       PLANES
     ================================================= */
 
-    const botonesPlanes = document.querySelectorAll(
-        ".plan-btn"
-    );
+    const botonesPlanes =
+        document.querySelectorAll(".plan-btn");
 
     botonesPlanes.forEach((boton) => {
 
@@ -149,14 +139,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 mostrarMensaje(
                     "🆓 Plan Gratis",
-                    "Puedes comenzar a explorar LectriaSaber 2.0 y conocer sus recursos educativos."
+                    "Puedes comenzar a explorar LectriaSaber 2.0 y descubrir sus recursos educativos."
                 );
 
-            } else {
+            } else if (titulo === "Plus") {
 
                 mostrarMensaje(
-                    "⭐ Próximamente",
-                    `El plan ${titulo} estará disponible próximamente.`
+                    "⭐ Plan Plus",
+                    "El plan Plus estará disponible próximamente con más actividades, lecturas y experiencias interactivas."
+                );
+
+            } else if (titulo === "Docente") {
+
+                mostrarMensaje(
+                    "👨‍🏫 Plan Docente",
+                    "El espacio docente está en preparación para ofrecer herramientas de acompañamiento y seguimiento."
+                );
+
+            } else if (titulo === "Institucional") {
+
+                mostrarMensaje(
+                    "🏫 Plan Institucional",
+                    "Próximamente podrás conocer las opciones para instituciones educativas."
                 );
 
             }
@@ -167,30 +171,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =================================================
-       BOTÓN ESPACIO DOCENTE
+       ESPACIO DOCENTE
     ================================================= */
 
-    const botonDocente = document.querySelector(
-        '.teacher-info a[href="#planes"]'
-    );
+    const botonDocente =
+        document.querySelector(".teacher-info a");
 
     if (botonDocente) {
 
-        botonDocente.addEventListener("click", () => {
+        botonDocente.addEventListener("click", (evento) => {
 
-            setTimeout(() => {
+            evento.preventDefault();
 
-                const planes = document.getElementById("planes");
+            const planes =
+                document.getElementById("planes");
 
-                if (planes) {
+            if (planes) {
 
-                    planes.scrollIntoView({
-                        behavior: "smooth"
-                    });
+                planes.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
 
-                }
-
-            }, 50);
+            }
 
         });
 
@@ -198,7 +201,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =================================================
-       MODAL DE MENSAJES
+       MODAL
     ================================================= */
 
     function mostrarMensaje(titulo, texto) {
@@ -214,7 +217,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
             <div class="ls-modal-overlay"></div>
 
-            <div class="ls-modal-box">
+            <div
+                class="ls-modal-box"
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="ls-modal-title">
 
                 <button
                     class="ls-modal-close"
@@ -226,7 +233,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     📚
                 </div>
 
-                <h2>
+                <h2 id="ls-modal-title">
                     ${titulo}
                 </h2>
 
@@ -245,8 +252,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         document.body.appendChild(modal);
 
-
-        /* Cerrar con botón */
 
         const cerrarBtn =
             modal.querySelector(".ls-modal-close");
@@ -273,6 +278,8 @@ document.addEventListener("DOMContentLoaded", () => {
             cerrarMensaje
         );
 
+        cerrarBtn.focus();
+
     }
 
 
@@ -286,16 +293,14 @@ document.addEventListener("DOMContentLoaded", () => {
             document.querySelector(".ls-modal");
 
         if (modal) {
-
             modal.remove();
-
         }
 
     }
 
 
     /* =================================================
-       CERRAR CON ESC
+       TECLA ESC
     ================================================= */
 
     document.addEventListener("keydown", (evento) => {
@@ -310,47 +315,47 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =================================================
-       ANIMACIÓN DE APARICIÓN
+       ANIMACIONES
     ================================================= */
 
-    const elementosAnimados = document.querySelectorAll(
-        ".info-card, .level-card, .skill-card, .saber-card, .plan-card, .teacher-box"
-    );
+    const elementosAnimados =
+        document.querySelectorAll(
+            ".info-card, .level-card, .skill-card, .saber-card, .plan-card, .teacher-box"
+        );
 
 
     if ("IntersectionObserver" in window) {
 
-        const observador = new IntersectionObserver(
-            (entradas, observer) => {
+        const observador =
+            new IntersectionObserver(
+                (entradas, observer) => {
 
-                entradas.forEach((entrada) => {
+                    entradas.forEach((entrada) => {
 
-                    if (entrada.isIntersecting) {
+                        if (entrada.isIntersecting) {
 
-                        entrada.target.classList.add(
-                            "ls-visible"
-                        );
+                            entrada.target.classList.add(
+                                "ls-visible"
+                            );
 
-                        observer.unobserve(
-                            entrada.target
-                        );
+                            observer.unobserve(
+                                entrada.target
+                            );
 
-                    }
+                        }
 
-                });
+                    });
 
-            },
-            {
-                threshold: 0.12
-            }
-        );
+                },
+                {
+                    threshold: 0.12
+                }
+            );
 
 
         elementosAnimados.forEach((elemento) => {
 
-            elemento.classList.add(
-                "ls-hidden"
-            );
+            elemento.classList.add("ls-hidden");
 
             observador.observe(elemento);
 
@@ -361,7 +366,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     /* =================================================
        ESTILOS DEL MODAL Y ANIMACIONES
-       SE INSERTAN AUTOMÁTICAMENTE
     ================================================= */
 
     const estilos = document.createElement("style");
@@ -400,7 +404,8 @@ document.addEventListener("DOMContentLoaded", () => {
             box-shadow:
                 0 25px 70px rgba(0, 0, 0, 0.25);
 
-            animation: lsModalEntrada 0.25s ease;
+            animation:
+                lsModalEntrada 0.25s ease;
         }
 
         .ls-modal-close {
@@ -421,6 +426,8 @@ document.addEventListener("DOMContentLoaded", () => {
             color: #2563EB;
 
             font-size: 18px;
+
+            cursor: pointer;
         }
 
         .ls-modal-icon {
@@ -465,6 +472,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         .ls-hidden {
             opacity: 0;
+
             transform: translateY(20px);
 
             transition:
@@ -474,6 +482,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         .ls-visible {
             opacity: 1;
+
             transform: translateY(0);
         }
 
@@ -481,12 +490,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
             from {
                 opacity: 0;
-                transform: translateY(-20px) scale(0.97);
+                transform:
+                    translateY(-20px)
+                    scale(0.97);
             }
 
             to {
                 opacity: 1;
-                transform: translateY(0) scale(1);
+                transform:
+                    translateY(0)
+                    scale(1);
+            }
+
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            .ls-hidden {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+
+            .ls-modal-box {
+                animation: none;
             }
 
         }
@@ -494,6 +521,5 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
 
     document.head.appendChild(estilos);
-
 
 });
