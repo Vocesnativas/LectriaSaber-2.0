@@ -19,6 +19,7 @@
 
     --fondo: #F7FFFB;
     --blanco: #FFFFFF;
+
     --texto: #172033;
     --texto-suave: #64748B;
 
@@ -42,6 +43,7 @@
 
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 85px;
 }
 
 body {
@@ -116,13 +118,14 @@ a {
 .logo {
     display: flex;
     align-items: center;
-
     gap: 10px;
 
     font-size: 20px;
     font-weight: 800;
 
     color: var(--azul-oscuro);
+
+    flex-shrink: 0;
 }
 
 .logo-icon {
@@ -163,20 +166,42 @@ a {
     display: flex;
     align-items: center;
 
-    gap: 22px;
+    gap: 20px;
 }
 
 .nav a {
+    position: relative;
+
     color: #475569;
 
     font-size: 14px;
     font-weight: 700;
 
-    transition: 0.25s ease;
+    transition: color 0.25s ease;
+}
+
+.nav a::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: -7px;
+
+    width: 0;
+    height: 2px;
+
+    background: var(--azul);
+
+    transition: width 0.25s ease;
 }
 
 .nav a:hover {
     color: var(--azul);
+}
+
+.nav a:hover::after {
+    width: 100%;
 }
 
 
@@ -187,15 +212,14 @@ a {
 .menu-btn {
     display: none;
 
-    border: none;
-
-    background: var(--azul);
-    color: white;
-
     width: 44px;
     height: 44px;
 
+    border: none;
     border-radius: 12px;
+
+    background: var(--azul);
+    color: white;
 
     font-size: 22px;
 }
@@ -308,12 +332,15 @@ a {
 
     font-weight: 800;
 
-    transition: 0.25s ease;
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease;
 }
 
 .btn-primary {
     background: var(--azul);
-
     color: white;
 
     box-shadow:
@@ -388,7 +415,6 @@ a {
 }
 
 @keyframes flotar {
-
     0%,
     100% {
         transform: translateY(0);
@@ -530,7 +556,7 @@ a {
 
     box-shadow: var(--sombra);
 
-    transition: 0.25s ease;
+    transition: transform 0.25s ease;
 }
 
 .info-card:hover {
@@ -589,7 +615,7 @@ a {
 
     box-shadow: var(--sombra);
 
-    transition: 0.25s ease;
+    transition: transform 0.25s ease;
 }
 
 .level-card:hover {
@@ -613,7 +639,6 @@ a {
     border-radius: 16px;
 
     font-weight: 900;
-
     font-size: 18px;
 }
 
@@ -642,15 +667,18 @@ a {
 
     font-weight: 800;
 
-    transition: 0.25s ease;
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        transform 0.25s ease;
 }
 
 .card-btn:hover {
+    transform: translateY(-2px);
+
     background: var(--azul);
 
     color: white;
-
-    transform: translateY(-2px);
 }
 
 
@@ -677,9 +705,11 @@ a {
 
     border-radius: var(--radio);
 
-    background: #ffffff;
+    background: white;
 
-    transition: 0.25s ease;
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
 }
 
 .skill-card:hover {
@@ -768,13 +798,11 @@ a {
 
     font-size: 25px;
 
-    transition: 0.25s ease;
+    transition: transform 0.25s ease;
 }
 
 .oral-list div:hover {
     transform: translateY(-4px);
-
-    box-shadow: var(--sombra);
 }
 
 .oral-list strong {
@@ -826,7 +854,9 @@ a {
 
     backdrop-filter: blur(10px);
 
-    transition: 0.25s ease;
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease;
 }
 
 .saber-card:hover {
@@ -868,7 +898,9 @@ a {
 
     font-weight: 800;
 
-    transition: 0.25s ease;
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease;
 }
 
 .saber-card button:hover {
@@ -880,6 +912,8 @@ a {
 
 /* =====================================================
    DOCENTES
+   CORREGIDO: teacher-box / teacher-info /
+   teacher-features / teacher-mascot
 ===================================================== */
 
 .teachers {
@@ -902,8 +936,6 @@ a {
     border: 1px solid #dbeafe;
 
     border-radius: 25px;
-
-    box-shadow: var(--sombra);
 }
 
 .teacher-info h2 {
@@ -914,16 +946,14 @@ a {
     font-size: 34px;
 
     line-height: 1.2;
-
-    color: var(--azul-oscuro);
 }
 
 .teacher-info > p {
     max-width: 700px;
 
-    margin-bottom: 25px;
-
     color: var(--texto-suave);
+
+    font-size: 17px;
 }
 
 .teacher-features {
@@ -933,7 +963,7 @@ a {
 
     gap: 12px;
 
-    margin: 25px 0;
+    margin: 28px 0;
 }
 
 .teacher-features div {
@@ -945,9 +975,9 @@ a {
 
     justify-content: center;
 
-    gap: 6px;
+    gap: 7px;
 
-    min-height: 85px;
+    min-height: 90px;
 
     padding: 12px;
 
@@ -955,7 +985,9 @@ a {
 
     border: 1px solid var(--borde);
 
-    border-radius: 14px;
+    border-radius: 15px;
+
+    text-align: center;
 }
 
 .teacher-features span {
@@ -983,12 +1015,11 @@ a {
 }
 
 .teacher-icon {
-    display: grid;
-
-    place-items: center;
-
     width: 110px;
     height: 110px;
+
+    display: grid;
+    place-items: center;
 
     margin: 0 auto 18px;
 
@@ -1003,6 +1034,8 @@ a {
     margin-bottom: 10px;
 
     color: var(--azul-oscuro);
+
+    font-size: 21px;
 }
 
 .teacher-mascot p {
@@ -1035,7 +1068,7 @@ a {
 
     text-align: center;
 
-    background: #ffffff;
+    background: white;
 
     border: 2px solid var(--borde);
 
@@ -1116,17 +1149,19 @@ a {
 
     background: var(--verde);
 
-    color: #ffffff;
+    color: white;
 
     font-weight: 800;
 
-    transition: 0.25s ease;
+    transition:
+        background 0.25s ease,
+        transform 0.25s ease;
 }
 
 .plan-btn:hover {
-    background: var(--verde-oscuro);
-
     transform: translateY(-2px);
+
+    background: var(--verde-oscuro);
 }
 
 
@@ -1212,7 +1247,7 @@ a {
    TABLET
 ===================================================== */
 
-@media (max-width: 1000px) {
+@media (max-width: 1100px) {
 
     .nav {
         gap: 12px;
@@ -1232,7 +1267,6 @@ a {
 
     .hero-text > p {
         margin-left: auto;
-
         margin-right: auto;
     }
 
@@ -1281,7 +1315,6 @@ a {
         position: absolute;
 
         top: 70px;
-
         left: 0;
         right: 0;
 
@@ -1314,6 +1347,10 @@ a {
         background: var(--azul-claro);
     }
 
+    .nav a::after {
+        display: none;
+    }
+
     .menu-btn {
         display: block;
     }
@@ -1344,8 +1381,7 @@ a {
     .purpose-grid,
     .levels-grid,
     .skills-grid,
-    .saber-grid,
-    .plans-grid {
+    .saber-grid {
         grid-template-columns: 1fr;
     }
 
@@ -1354,8 +1390,6 @@ a {
     }
 
     .teacher-box {
-        grid-template-columns: 1fr;
-
         padding: 30px;
     }
 
@@ -1365,6 +1399,10 @@ a {
 
     .teacher-features {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .plans-grid {
+        grid-template-columns: 1fr;
     }
 
     .footer-content {
@@ -1378,6 +1416,10 @@ a {
 ===================================================== */
 
 @media (max-width: 480px) {
+
+    .container {
+        width: 90%;
+    }
 
     .logo {
         font-size: 17px;
@@ -1415,6 +1457,10 @@ a {
 
     .teacher-features {
         grid-template-columns: 1fr 1fr;
+    }
+
+    .teacher-box {
+        padding: 22px;
     }
 
     .plans-message {
