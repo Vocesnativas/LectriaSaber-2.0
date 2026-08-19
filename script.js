@@ -9,9 +9,9 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("LectriaSaber 2.0 iniciado correctamente 🚀");
 
 
-    /* =====================================================
+    /* =================================================
        MENÚ MÓVIL
-    ===================================================== */
+    ================================================= */
 
     const menuBtn = document.getElementById("menu-btn");
     const nav = document.querySelector(".nav");
@@ -30,6 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
             );
 
             menuBtn.textContent = abierto ? "✕" : "☰";
+
         });
 
 
@@ -49,6 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     "aria-label",
                     "Abrir menú"
                 );
+
             });
 
         });
@@ -56,70 +58,43 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* =====================================================
-       NAVEGACIÓN SUAVE
-    ===================================================== */
+    /* =================================================
+       CERRAR MENÚ AL CAMBIAR A ESCRITORIO
+    ================================================= */
 
-    const enlacesInternos = document.querySelectorAll(
-        'a[href^="#"]'
-    );
+    window.addEventListener("resize", () => {
 
-    enlacesInternos.forEach((enlace) => {
+        if (window.innerWidth > 760 && nav && menuBtn) {
 
-        enlace.addEventListener("click", (evento) => {
+            nav.classList.remove("active");
 
-            const destino = enlace.getAttribute("href");
+            menuBtn.textContent = "☰";
 
-            if (!destino || destino === "#") {
-                return;
-            }
+            menuBtn.setAttribute(
+                "aria-label",
+                "Abrir menú"
+            );
 
-            const elemento = document.querySelector(destino);
-
-            if (elemento) {
-
-                evento.preventDefault();
-
-                const alturaHeader =
-                    document.querySelector(".header")?.offsetHeight || 0;
-
-                const posicion =
-                    elemento.getBoundingClientRect().top +
-                    window.scrollY -
-                    alturaHeader;
-
-                window.scrollTo({
-                    top: posicion,
-                    behavior: "smooth"
-                });
-
-            }
-
-        });
+        }
 
     });
 
 
-    /* =====================================================
-       BOTONES DE LECTURA
-    ===================================================== */
+    /* =================================================
+       BOTONES "EXPLORAR" Y "VER LECTURAS"
+    ================================================= */
 
-    const botonesLectura =
-        document.querySelectorAll(".level-card .card-btn");
+    const botonesLectura = document.querySelectorAll(
+        ".card-btn"
+    );
 
-    botonesLectura.forEach((boton, indice) => {
+    botonesLectura.forEach((boton) => {
 
         boton.addEventListener("click", () => {
 
-            const mensajes = [
-                "📖 Aventuras con las letras estará disponible muy pronto.",
-                "📚 Historias que cobran vida estará disponible muy pronto.",
-                "📖 La Biblioteca de LectriaSaber estará disponible muy pronto."
-            ];
-
             mostrarMensaje(
-                mensajes[indice] ||
-                "📚 Esta sección estará disponible próximamente."
+                "📖 Próximamente",
+                "Estamos preparando nuevas lecturas, cuentos y actividades para LectriaSaber 2.0."
             );
 
         });
@@ -127,19 +102,21 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-    /* =====================================================
+    /* =================================================
        BOTONES PRUEBAS SABER
-    ===================================================== */
+    ================================================= */
 
-    const botonesSaber =
-        document.querySelectorAll(".saber-card button");
+    const botonesSaber = document.querySelectorAll(
+        ".saber-card button"
+    );
 
     botonesSaber.forEach((boton) => {
 
         boton.addEventListener("click", () => {
 
             mostrarMensaje(
-                "🎯 Esta prueba estará disponible próximamente en LectriaSaber 2.0."
+                "🎯 Pruebas Saber",
+                "Esta sección estará disponible próximamente con actividades y preguntas de práctica."
             );
 
         });
@@ -147,39 +124,39 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-    /* =====================================================
+    /* =================================================
        BOTONES DE PLANES
-    ===================================================== */
+    ================================================= */
 
-    const botonesPlanes =
-        document.querySelectorAll(".plan-btn");
+    const botonesPlanes = document.querySelectorAll(
+        ".plan-btn"
+    );
 
-    botonesPlanes.forEach((boton, indice) => {
+    botonesPlanes.forEach((boton) => {
 
         boton.addEventListener("click", () => {
 
-            if (indice === 0) {
+            const tarjeta = boton.closest(".plan-card");
+
+            if (!tarjeta) return;
+
+            const titulo =
+                tarjeta.querySelector("h3")?.textContent.trim()
+                || "Plan";
+
+
+            if (titulo === "Gratis") {
 
                 mostrarMensaje(
-                    "🆓 El plan Gratis te permitirá comenzar a explorar LectriaSaber 2.0."
-                );
-
-            } else if (indice === 1) {
-
-                mostrarMensaje(
-                    "⭐ El plan Plus estará disponible próximamente."
-                );
-
-            } else if (indice === 2) {
-
-                mostrarMensaje(
-                    "👨‍🏫 El espacio Docente estará disponible próximamente."
+                    "🆓 Plan Gratis",
+                    "Puedes comenzar a explorar LectriaSaber 2.0 y conocer sus recursos educativos."
                 );
 
             } else {
 
                 mostrarMensaje(
-                    "🏫 El plan Institucional estará disponible próximamente."
+                    "⭐ Próximamente",
+                    `El plan ${titulo} estará disponible próximamente.`
                 );
 
             }
@@ -189,186 +166,334 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-    /* =====================================================
+    /* =================================================
        BOTÓN ESPACIO DOCENTE
-    ===================================================== */
+    ================================================= */
 
-    const botonDocente =
-        document.querySelector(".teacher-info .btn");
+    const botonDocente = document.querySelector(
+        '.teacher-info a[href="#planes"]'
+    );
 
     if (botonDocente) {
 
         botonDocente.addEventListener("click", () => {
 
-            const planes =
-                document.getElementById("planes");
-
-            if (planes) {
-
-                const alturaHeader =
-                    document.querySelector(".header")?.offsetHeight || 0;
-
-                const posicion =
-                    planes.getBoundingClientRect().top +
-                    window.scrollY -
-                    alturaHeader;
-
-                window.scrollTo({
-                    top: posicion,
-                    behavior: "smooth"
-                });
-
-            }
-
-        });
-
-    }
-
-
-    /* =====================================================
-       INTERACCIÓN DE LETRÍN
-    ===================================================== */
-
-    const mascot =
-        document.querySelector(".mascot");
-
-    const mascotCard =
-        document.querySelector(".mascot-card");
-
-    if (mascot && mascotCard) {
-
-        mascot.style.cursor = "pointer";
-
-        mascot.addEventListener("click", () => {
-
-            mostrarMensaje(
-                "🦊 ¡Hola! Soy Letrín. Vamos a descubrir juntos el maravilloso mundo de las palabras."
-            );
-
-        });
-
-    }
-
-
-    /* =====================================================
-       MENSAJE GENERAL
-    ===================================================== */
-
-    function mostrarMensaje(texto) {
-
-        const mensajeAnterior =
-            document.querySelector(".lectria-mensaje");
-
-        if (mensajeAnterior) {
-            mensajeAnterior.remove();
-        }
-
-
-        const mensaje =
-            document.createElement("div");
-
-        mensaje.className = "lectria-mensaje";
-
-        mensaje.textContent = texto;
-
-
-        mensaje.style.position = "fixed";
-        mensaje.style.left = "50%";
-        mensaje.style.bottom = "25px";
-        mensaje.style.transform = "translateX(-50%)";
-
-        mensaje.style.width = "min(90%, 520px)";
-
-        mensaje.style.padding = "16px 20px";
-
-        mensaje.style.background = "#172554";
-        mensaje.style.color = "#ffffff";
-
-        mensaje.style.borderRadius = "14px";
-
-        mensaje.style.textAlign = "center";
-
-        mensaje.style.fontWeight = "700";
-
-        mensaje.style.boxShadow =
-            "0 15px 35px rgba(0,0,0,0.20)";
-
-        mensaje.style.zIndex = "9999";
-
-        mensaje.style.animation =
-            "mensajeEntrada 0.3s ease";
-
-
-        document.body.appendChild(mensaje);
-
-
-        setTimeout(() => {
-
-            mensaje.style.opacity = "0";
-
-            mensaje.style.transition =
-                "opacity 0.3s ease";
-
             setTimeout(() => {
 
-                mensaje.remove();
+                const planes = document.getElementById("planes");
 
-            }, 300);
+                if (planes) {
 
-        }, 3500);
+                    planes.scrollIntoView({
+                        behavior: "smooth"
+                    });
+
+                }
+
+            }, 50);
+
+        });
 
     }
 
 
-    /* =====================================================
-       ANIMACIÓN DE MENSAJES
-    ===================================================== */
+    /* =================================================
+       MODAL DE MENSAJES
+    ================================================= */
 
-    const estilo =
-        document.createElement("style");
+    function mostrarMensaje(titulo, texto) {
 
-    estilo.textContent = `
+        cerrarMensaje();
 
-        @keyframes mensajeEntrada {
+
+        const modal = document.createElement("div");
+
+        modal.className = "ls-modal";
+
+        modal.innerHTML = `
+
+            <div class="ls-modal-overlay"></div>
+
+            <div class="ls-modal-box">
+
+                <button
+                    class="ls-modal-close"
+                    aria-label="Cerrar">
+                    ✕
+                </button>
+
+                <div class="ls-modal-icon">
+                    📚
+                </div>
+
+                <h2>
+                    ${titulo}
+                </h2>
+
+                <p>
+                    ${texto}
+                </p>
+
+                <button class="ls-modal-button">
+                    Entendido
+                </button>
+
+            </div>
+
+        `;
+
+
+        document.body.appendChild(modal);
+
+
+        /* Cerrar con botón */
+
+        const cerrarBtn =
+            modal.querySelector(".ls-modal-close");
+
+        const entendidoBtn =
+            modal.querySelector(".ls-modal-button");
+
+        const overlay =
+            modal.querySelector(".ls-modal-overlay");
+
+
+        cerrarBtn.addEventListener(
+            "click",
+            cerrarMensaje
+        );
+
+        entendidoBtn.addEventListener(
+            "click",
+            cerrarMensaje
+        );
+
+        overlay.addEventListener(
+            "click",
+            cerrarMensaje
+        );
+
+    }
+
+
+    /* =================================================
+       CERRAR MODAL
+    ================================================= */
+
+    function cerrarMensaje() {
+
+        const modal =
+            document.querySelector(".ls-modal");
+
+        if (modal) {
+
+            modal.remove();
+
+        }
+
+    }
+
+
+    /* =================================================
+       CERRAR CON ESC
+    ================================================= */
+
+    document.addEventListener("keydown", (evento) => {
+
+        if (evento.key === "Escape") {
+
+            cerrarMensaje();
+
+        }
+
+    });
+
+
+    /* =================================================
+       ANIMACIÓN DE APARICIÓN
+    ================================================= */
+
+    const elementosAnimados = document.querySelectorAll(
+        ".info-card, .level-card, .skill-card, .saber-card, .plan-card, .teacher-box"
+    );
+
+
+    if ("IntersectionObserver" in window) {
+
+        const observador = new IntersectionObserver(
+            (entradas, observer) => {
+
+                entradas.forEach((entrada) => {
+
+                    if (entrada.isIntersecting) {
+
+                        entrada.target.classList.add(
+                            "ls-visible"
+                        );
+
+                        observer.unobserve(
+                            entrada.target
+                        );
+
+                    }
+
+                });
+
+            },
+            {
+                threshold: 0.12
+            }
+        );
+
+
+        elementosAnimados.forEach((elemento) => {
+
+            elemento.classList.add(
+                "ls-hidden"
+            );
+
+            observador.observe(elemento);
+
+        });
+
+    }
+
+
+    /* =================================================
+       ESTILOS DEL MODAL Y ANIMACIONES
+       SE INSERTAN AUTOMÁTICAMENTE
+    ================================================= */
+
+    const estilos = document.createElement("style");
+
+    estilos.textContent = `
+
+        .ls-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+        }
+
+        .ls-modal-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.65);
+            backdrop-filter: blur(4px);
+        }
+
+        .ls-modal-box {
+            position: relative;
+            z-index: 2;
+
+            width: min(460px, 90%);
+
+            margin: 15vh auto 0;
+
+            padding: 35px 30px;
+
+            text-align: center;
+
+            background: white;
+
+            border-radius: 24px;
+
+            box-shadow:
+                0 25px 70px rgba(0, 0, 0, 0.25);
+
+            animation: lsModalEntrada 0.25s ease;
+        }
+
+        .ls-modal-close {
+            position: absolute;
+
+            top: 14px;
+            right: 14px;
+
+            width: 36px;
+            height: 36px;
+
+            border: none;
+
+            border-radius: 50%;
+
+            background: #eef5ff;
+
+            color: #2563EB;
+
+            font-size: 18px;
+        }
+
+        .ls-modal-icon {
+            font-size: 50px;
+
+            margin-bottom: 10px;
+        }
+
+        .ls-modal-box h2 {
+            margin-bottom: 10px;
+
+            color: #173B8F;
+        }
+
+        .ls-modal-box p {
+            margin-bottom: 25px;
+
+            color: #64748B;
+
+            line-height: 1.7;
+        }
+
+        .ls-modal-button {
+            border: none;
+
+            padding: 12px 25px;
+
+            border-radius: 12px;
+
+            background: #2563EB;
+
+            color: white;
+
+            font-weight: 800;
+
+            cursor: pointer;
+        }
+
+        .ls-modal-button:hover {
+            background: #173B8F;
+        }
+
+        .ls-hidden {
+            opacity: 0;
+            transform: translateY(20px);
+
+            transition:
+                opacity 0.6s ease,
+                transform 0.6s ease;
+        }
+
+        .ls-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes lsModalEntrada {
 
             from {
                 opacity: 0;
-                transform:
-                    translate(-50%, 20px);
+                transform: translateY(-20px) scale(0.97);
             }
 
             to {
                 opacity: 1;
-                transform:
-                    translate(-50%, 0);
+                transform: translateY(0) scale(1);
             }
 
         }
 
     `;
 
-    document.head.appendChild(estilo);
+    document.head.appendChild(estilos);
 
-
-    /* =====================================================
-       CERRAR MENÚ SI SE AMPLÍA LA VENTANA
-    ===================================================== */
-
-    window.addEventListener("resize", () => {
-
-        if (
-            window.innerWidth > 760 &&
-            nav
-        ) {
-
-            nav.classList.remove("active");
-
-            if (menuBtn) {
-                menuBtn.textContent = "☰";
-            }
-
-        }
-
-    });
 
 });
