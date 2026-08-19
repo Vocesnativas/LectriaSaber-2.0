@@ -155,12 +155,21 @@ a {
 
 .logo small {
     display: inline-block;
-    margin-left: 4px;
 
-    color: var(--azul);
+    margin-left: 6px;
 
-    font-size: 13px;
-    font-weight: 800;
+    padding: 3px 7px;
+
+    background: var(--azul);
+    color: white;
+
+    border-radius: 7px;
+
+    font-size: 12px;
+    font-weight: 900;
+
+    line-height: 1;
+    vertical-align: middle;
 }
 
 /* =====================================================
