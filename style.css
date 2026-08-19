@@ -1,6 +1,6 @@
 /* =====================================================
    LECTRIASABER 2.0
-   ESTILOS PRINCIPALES
+   ESTILOS PRINCIPALES — VERSIÓN FINAL
 ===================================================== */
 
 :root {
@@ -18,11 +18,14 @@
 
     --fondo: #F7FFFB;
     --blanco: #FFFFFF;
+
     --texto: #172033;
     --texto-suave: #64748B;
+
     --borde: #DCEFE7;
 
-    --sombra: 0 12px 30px rgba(17, 150, 111, 0.10);
+    --sombra: 0 12px 30px rgba(17,150,111,.10);
+
     --radio: 20px;
 }
 
@@ -42,11 +45,20 @@ html {
 }
 
 body {
+    margin: 0;
+    padding: 0;
     font-family: Arial, Helvetica, sans-serif;
     background: var(--fondo);
     color: var(--texto);
     line-height: 1.6;
     overflow-x: hidden;
+}
+
+main,
+section {
+    margin: 0;
+    padding-left: 0;
+    padding-right: 0;
 }
 
 img {
@@ -87,12 +99,13 @@ a {
     z-index: 1000;
 
     width: 100%;
+    margin: 0;
 
-    background: rgba(255, 255, 255, 0.97);
+    background: rgba(255,255,255,.97);
+
     border-bottom: 1px solid var(--borde);
 
     backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
 }
 
 .navbar {
@@ -114,12 +127,12 @@ a {
     align-items: center;
     gap: 10px;
 
-    flex-shrink: 0;
-
     font-size: 20px;
     font-weight: 800;
 
     color: var(--azul-oscuro);
+
+    flex-shrink: 0;
 }
 
 .logo-icon {
@@ -130,6 +143,7 @@ a {
     place-items: center;
 
     background: var(--azul-claro);
+
     border-radius: 14px;
 
     font-size: 24px;
@@ -141,10 +155,10 @@ a {
 
 .logo small {
     display: inline-block;
-
     margin-left: 4px;
 
     color: var(--azul);
+
     font-size: 13px;
     font-weight: 800;
 }
@@ -163,16 +177,18 @@ a {
     position: relative;
 
     color: #475569;
+
     font-size: 14px;
     font-weight: 700;
 
-    transition: color 0.25s ease;
+    transition: color .25s ease;
 }
 
 .nav a::after {
     content: "";
 
     position: absolute;
+
     left: 0;
     bottom: -7px;
 
@@ -181,7 +197,7 @@ a {
 
     background: var(--azul);
 
-    transition: width 0.25s ease;
+    transition: width .25s ease;
 }
 
 .nav a:hover {
@@ -193,7 +209,7 @@ a {
 }
 
 /* =====================================================
-   MENÚ MÓVIL
+   BOTÓN MENÚ
 ===================================================== */
 
 .menu-btn {
@@ -218,8 +234,9 @@ a {
 .hero {
     position: relative;
 
-    /* CORRECCIÓN DEL ESPACIO SUPERIOR */
-    padding: 28px 0 70px;
+    margin: 0;
+
+    padding: 35px 0 70px;
 
     background:
         radial-gradient(
@@ -236,9 +253,11 @@ a {
 
 .hero-content {
     display: grid;
-    grid-template-columns: 1.25fr 0.75fr;
+
+    grid-template-columns: 1.25fr .75fr;
 
     align-items: center;
+
     gap: 60px;
 }
 
@@ -257,7 +276,7 @@ a {
     font-size: 12px;
     font-weight: 800;
 
-    letter-spacing: 0.5px;
+    letter-spacing: .5px;
 }
 
 .hero h1 {
@@ -265,9 +284,10 @@ a {
 
     max-width: 760px;
 
-    font-size: clamp(42px, 6vw, 72px);
+    font-size: clamp(42px,6vw,72px);
 
     line-height: 1.05;
+
     letter-spacing: -2px;
 }
 
@@ -282,14 +302,17 @@ a {
     margin-top: 25px;
 
     color: var(--texto-suave);
+
     font-size: 18px;
 }
 
 .hero-buttons {
     display: flex;
+
     flex-wrap: wrap;
 
     gap: 14px;
+
     margin-top: 32px;
 }
 
@@ -311,11 +334,7 @@ a {
 
     font-weight: 800;
 
-    transition:
-        transform 0.25s ease,
-        background 0.25s ease,
-        color 0.25s ease,
-        border-color 0.25s ease;
+    transition: .25s ease;
 }
 
 .btn-primary {
@@ -323,7 +342,7 @@ a {
     color: white;
 
     box-shadow:
-        0 10px 20px rgba(37, 99, 235, 0.20);
+        0 10px 20px rgba(37,99,235,.20);
 }
 
 .btn-primary:hover {
@@ -343,6 +362,7 @@ a {
     transform: translateY(-3px);
 
     border-color: var(--azul);
+
     color: var(--azul);
 }
 
@@ -356,7 +376,7 @@ a {
 }
 
 .mascot-card {
-    width: min(360px, 100%);
+    width: min(360px,100%);
 
     padding: 38px 30px;
 
@@ -365,6 +385,7 @@ a {
     background: white;
 
     border: 1px solid var(--borde);
+
     border-radius: 30px;
 
     box-shadow: var(--sombra);
@@ -389,8 +410,7 @@ a {
 }
 
 @keyframes flotar {
-    0%,
-    100% {
+    0%,100% {
         transform: translateY(0);
     }
 
@@ -432,7 +452,8 @@ a {
 .section-title h2 {
     margin-top: 15px;
 
-    font-size: clamp(30px, 4vw, 46px);
+    font-size: clamp(30px,4vw,46px);
+
     line-height: 1.15;
 }
 
@@ -440,6 +461,7 @@ a {
     margin-top: 14px;
 
     color: var(--texto-suave);
+
     font-size: 17px;
 }
 
@@ -454,7 +476,7 @@ a {
 .about-content {
     display: grid;
 
-    grid-template-columns: 1.1fr 0.9fr;
+    grid-template-columns: 1.1fr .9fr;
 
     gap: 30px;
 
@@ -465,6 +487,7 @@ a {
     padding: 35px;
 
     border: 1px solid var(--borde);
+
     border-radius: var(--radio);
 }
 
@@ -472,6 +495,7 @@ a {
     margin-bottom: 15px;
 
     font-size: 25px;
+
     color: var(--azul-oscuro);
 }
 
@@ -504,7 +528,7 @@ a {
 .purpose-grid {
     display: grid;
 
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3,1fr);
 
     gap: 22px;
 }
@@ -515,11 +539,12 @@ a {
     background: white;
 
     border: 1px solid var(--borde);
+
     border-radius: var(--radio);
 
     box-shadow: var(--sombra);
 
-    transition: transform 0.25s ease;
+    transition: transform .25s ease;
 }
 
 .info-card:hover {
@@ -561,7 +586,7 @@ a {
 .levels-grid {
     display: grid;
 
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3,1fr);
 
     gap: 22px;
 }
@@ -572,11 +597,12 @@ a {
     background: white;
 
     border-radius: var(--radio);
+
     border: 1px solid var(--borde);
 
     box-shadow: var(--sombra);
 
-    transition: transform 0.25s ease;
+    transition: transform .25s ease;
 }
 
 .level-card:hover {
@@ -594,6 +620,7 @@ a {
     margin-bottom: 18px;
 
     background: var(--azul);
+
     color: white;
 
     border-radius: 16px;
@@ -620,20 +647,19 @@ a {
     border-radius: 10px;
 
     background: var(--azul-claro);
+
     color: var(--azul);
 
     font-weight: 800;
 
-    transition:
-        background 0.25s ease,
-        color 0.25s ease,
-        transform 0.25s ease;
+    transition: .25s ease;
 }
 
 .card-btn:hover {
     transform: translateY(-2px);
 
     background: var(--azul);
+
     color: white;
 }
 
@@ -648,7 +674,7 @@ a {
 .skills-grid {
     display: grid;
 
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4,1fr);
 
     gap: 20px;
 }
@@ -657,13 +683,12 @@ a {
     padding: 28px;
 
     border: 1px solid var(--borde);
+
     border-radius: var(--radio);
 
     background: white;
 
-    transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease;
+    transition: .25s ease;
 }
 
 .skill-card:hover {
@@ -705,6 +730,7 @@ a {
     background: white;
 
     border: 1px solid var(--borde);
+
     border-radius: var(--radio);
 
     box-shadow: var(--sombra);
@@ -726,13 +752,14 @@ a {
 .oral-list {
     display: grid;
 
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2,1fr);
 
     gap: 15px;
 }
 
 .oral-list div {
     display: flex;
+
     align-items: center;
 
     gap: 12px;
@@ -742,11 +769,12 @@ a {
     background: white;
 
     border: 1px solid var(--borde);
+
     border-radius: 16px;
 
     font-size: 25px;
 
-    transition: transform 0.25s ease;
+    transition: transform .25s ease;
 }
 
 .oral-list div:hover {
@@ -758,7 +786,7 @@ a {
 }
 
 /* =====================================================
-   PRUEBAS SABER
+   SABER
 ===================================================== */
 
 .saber {
@@ -773,7 +801,7 @@ a {
 }
 
 .saber .section-title span {
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(255,255,255,.15);
     color: white;
 }
 
@@ -784,7 +812,7 @@ a {
 .saber-grid {
     display: grid;
 
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4,1fr);
 
     gap: 18px;
 }
@@ -792,22 +820,20 @@ a {
 .saber-card {
     padding: 28px;
 
-    background: rgba(255, 255, 255, 0.10);
+    background: rgba(255,255,255,.10);
 
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255,255,255,.15);
 
     border-radius: var(--radio);
 
     backdrop-filter: blur(10px);
 
-    transition:
-        transform 0.25s ease,
-        background 0.25s ease;
+    transition: .25s ease;
 }
 
 .saber-card:hover {
     transform: translateY(-5px);
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(255,255,255,.15);
 }
 
 .saber-card > span {
@@ -832,16 +858,16 @@ a {
     padding: 11px;
 
     border: none;
+
     border-radius: 10px;
 
     background: white;
+
     color: var(--azul-oscuro);
 
     font-weight: 800;
 
-    transition:
-        transform 0.25s ease,
-        background 0.25s ease;
+    transition: .25s ease;
 }
 
 .saber-card button:hover {
@@ -860,7 +886,7 @@ a {
 .teacher-box {
     display: grid;
 
-    grid-template-columns: 1.3fr 0.7fr;
+    grid-template-columns: 1.3fr .7fr;
 
     align-items: center;
 
@@ -881,6 +907,7 @@ a {
     margin: 14px 0;
 
     font-size: 34px;
+
     line-height: 1.2;
 }
 
@@ -888,13 +915,14 @@ a {
     max-width: 700px;
 
     color: var(--texto-suave);
+
     font-size: 17px;
 }
 
 .teacher-features {
     display: grid;
 
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4,1fr);
 
     gap: 12px;
 
@@ -907,6 +935,7 @@ a {
     flex-direction: column;
 
     align-items: center;
+
     justify-content: center;
 
     gap: 7px;
@@ -918,6 +947,7 @@ a {
     background: white;
 
     border: 1px solid var(--borde);
+
     border-radius: 15px;
 
     text-align: center;
@@ -940,6 +970,7 @@ a {
     background: white;
 
     border: 1px solid var(--borde);
+
     border-radius: 22px;
 
     box-shadow: var(--sombra);
@@ -965,6 +996,7 @@ a {
     margin-bottom: 10px;
 
     color: var(--azul-oscuro);
+
     font-size: 21px;
 }
 
@@ -983,7 +1015,7 @@ a {
 .plans-grid {
     display: grid;
 
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4,1fr);
 
     gap: 20px;
 
@@ -1000,14 +1032,12 @@ a {
     background: white;
 
     border: 2px solid var(--borde);
+
     border-radius: 22px;
 
     box-shadow: var(--sombra);
 
-    transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease,
-        border-color 0.25s ease;
+    transition: .25s ease;
 }
 
 .plan-card:hover {
@@ -1016,7 +1046,7 @@ a {
     border-color: var(--verde);
 
     box-shadow:
-        0 18px 35px rgba(17, 150, 111, 0.16);
+        0 18px 35px rgba(17,150,111,.16);
 }
 
 .plan-card.featured {
@@ -1042,6 +1072,7 @@ a {
     margin-bottom: 8px;
 
     font-size: 23px;
+
     color: var(--texto);
 }
 
@@ -1049,6 +1080,7 @@ a {
     margin-bottom: 15px;
 
     color: var(--texto-suave);
+
     font-size: 14px;
 }
 
@@ -1060,6 +1092,7 @@ a {
     color: var(--verde-oscuro);
 
     font-size: 20px;
+
     font-weight: 900;
 }
 
@@ -1069,16 +1102,16 @@ a {
     padding: 11px 18px;
 
     border: none;
+
     border-radius: 12px;
 
     background: var(--verde);
+
     color: white;
 
     font-weight: 800;
 
-    transition:
-        background 0.25s ease,
-        transform 0.25s ease;
+    transition: .25s ease;
 }
 
 .plan-btn:hover {
@@ -1094,11 +1127,13 @@ a {
     display: flex;
 
     align-items: center;
+
     justify-content: center;
 
     gap: 12px;
 
     margin-top: 35px;
+
     padding: 20px;
 
     text-align: center;
@@ -1114,7 +1149,9 @@ a {
     color: var(--verde-oscuro);
 
     font-size: 18px;
+
     font-weight: 700;
+
     font-style: italic;
 }
 
@@ -1150,7 +1187,7 @@ a {
 
     text-align: center;
 
-    border-top: 1px solid rgba(255, 255, 255, 0.10);
+    border-top: 1px solid rgba(255,255,255,.10);
 }
 
 .footer-bottom p {
@@ -1158,28 +1195,10 @@ a {
 }
 
 /* =====================================================
-   ANIMACIONES JAVASCRIPT
-===================================================== */
-
-.ls-hidden {
-    opacity: 0;
-    transform: translateY(20px);
-}
-
-.ls-visible {
-    opacity: 1;
-    transform: translateY(0);
-
-    transition:
-        opacity 0.6s ease,
-        transform 0.6s ease;
-}
-
-/* =====================================================
    TABLET
 ===================================================== */
 
-@media (max-width: 1100px) {
+@media (max-width:1100px) {
 
     .nav {
         gap: 12px;
@@ -1212,19 +1231,19 @@ a {
 
     .purpose-grid,
     .levels-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2,1fr);
     }
 
     .skills-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2,1fr);
     }
 
     .saber-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2,1fr);
     }
 
     .plans-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2,1fr);
     }
 
     .teacher-box {
@@ -1236,11 +1255,7 @@ a {
    MÓVIL
 ===================================================== */
 
-@media (max-width: 760px) {
-
-    html {
-        scroll-padding-top: 70px;
-    }
+@media (max-width:760px) {
 
     .navbar {
         min-height: 70px;
@@ -1256,6 +1271,7 @@ a {
         display: none;
 
         flex-direction: column;
+
         align-items: stretch;
 
         padding: 20px;
@@ -1289,7 +1305,7 @@ a {
     }
 
     .hero {
-        padding: 35px 0 60px;
+        padding: 35px 0 65px;
     }
 
     .hero h1 {
@@ -1330,7 +1346,7 @@ a {
     }
 
     .teacher-features {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2,1fr);
     }
 
     .plans-grid {
@@ -1346,7 +1362,7 @@ a {
    MÓVILES PEQUEÑOS
 ===================================================== */
 
-@media (max-width: 480px) {
+@media (max-width:480px) {
 
     .container {
         width: 90%;
@@ -1359,7 +1375,6 @@ a {
     .logo-icon {
         width: 40px;
         height: 40px;
-
         font-size: 21px;
     }
 
@@ -1382,7 +1397,6 @@ a {
     .mascot {
         width: 125px;
         height: 125px;
-
         font-size: 75px;
     }
 
