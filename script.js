@@ -524,3 +524,18 @@ document.addEventListener("DOMContentLoaded", () => {
     document.head.appendChild(estilos);
 
 });
+/* =====================================================
+   LECTURA 1° - PRUEBA ESCENA 1
+===================================================== */
+
+const btnEscena2 = document.getElementById("btnEscena2");
+
+if (btnEscena2) {
+
+    btnEscena2.addEventListener("click", function () {
+
+        alert("¡Muy bien! Ahora Letrín pasará a la Escena 2.");
+
+    });
+
+}
