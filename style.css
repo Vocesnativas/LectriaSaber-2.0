@@ -2945,3 +2945,131 @@ section.teachers .teacher-mascot p {
      }
 
 }
+/* =====================================================
+   LECTURA 1° - MÓDULO LETRÍN
+===================================================== */
+
+.lectura-1 {
+    padding: 70px 20px;
+    background: #f5f8fc;
+}
+
+.lectura-card {
+    width: min(760px, 100%);
+    margin: 0 auto;
+    padding: 40px 30px;
+    background: #ffffff;
+    border-radius: 28px;
+    text-align: center;
+    box-shadow: 0 15px 40px rgba(23, 32, 51, 0.12);
+}
+
+.lectura-progreso {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.lectura-progreso span {
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #e8edf5;
+    color: #657080;
+    font-weight: bold;
+}
+
+.lectura-progreso span.activo {
+    background: #4f46e5;
+    color: white;
+}
+
+.personaje {
+    font-size: 75px;
+    margin-bottom: 10px;
+}
+
+.escena-numero {
+    display: inline-block;
+    margin-bottom: 12px;
+    padding: 7px 16px;
+    border-radius: 20px;
+    background: #eef2ff;
+    color: #4f46e5;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.escena-contenido h2 {
+    margin-bottom: 22px;
+    font-size: 32px;
+    color: #172033;
+}
+
+.escena-contenido p {
+    max-width: 600px;
+    margin: 10px auto;
+    font-size: 19px;
+    line-height: 1.6;
+    color: #465166;
+}
+
+.palabra-misteriosa {
+    margin: 30px auto;
+    padding: 22px;
+    max-width: 430px;
+    border-radius: 20px;
+    background: #fff7d6;
+    font-size: 30px;
+    font-weight: 800;
+    color: #b77900;
+}
+
+.pregunta-guia {
+    margin-top: 25px !important;
+    font-weight: bold;
+}
+
+.btn-siguiente {
+    margin-top: 30px;
+    padding: 14px 30px;
+    border: none;
+    border-radius: 14px;
+    background: #4f46e5;
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-siguiente:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(79, 70, 229, 0.25);
+}
+
+@media (max-width: 600px) {
+
+    .lectura-card {
+        padding: 30px 18px;
+    }
+
+    .escena-contenido h2 {
+        font-size: 26px;
+    }
+
+    .escena-contenido p {
+        font-size: 17px;
+    }
+
+    .palabra-misteriosa {
+        font-size: 24px;
+    }
+
+}
