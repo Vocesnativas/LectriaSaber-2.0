@@ -20,19 +20,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
         menuBtn.addEventListener("click", () => {
 
-            const abierto = nav.classList.toggle("active");
+            nav.classList.toggle("active");
 
-            menuBtn.textContent = abierto ? "✕" : "☰";
+            const abierto = nav.classList.contains("active");
 
             menuBtn.setAttribute(
                 "aria-label",
                 abierto ? "Cerrar menú" : "Abrir menú"
             );
 
+            menuBtn.setAttribute(
+                "aria-expanded",
+                abierto ? "true" : "false"
+            );
+
+            menuBtn.textContent = abierto ? "✕" : "☰";
+
         });
 
 
-        nav.querySelectorAll("a").forEach((enlace) => {
+        const enlacesMenu = nav.querySelectorAll("a");
+
+        enlacesMenu.forEach((enlace) => {
 
             enlace.addEventListener("click", () => {
 
@@ -45,6 +54,11 @@ document.addEventListener("DOMContentLoaded", () => {
                     "Abrir menú"
                 );
 
+                menuBtn.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
             });
 
         });
@@ -53,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =================================================
-       RESPONSIVE — CERRAR MENÚ
+       CERRAR MENÚ AL CAMBIAR A ESCRITORIO
     ================================================= */
 
     window.addEventListener("resize", () => {
@@ -69,6 +83,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 "Abrir menú"
             );
 
+            menuBtn.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
         }
 
     });
@@ -78,7 +97,8 @@ document.addEventListener("DOMContentLoaded", () => {
        BOTONES DE LECTURA
     ================================================= */
 
-    const botonesLectura = document.querySelectorAll(".card-btn");
+    const botonesLectura =
+        document.querySelectorAll(".card-btn");
 
     botonesLectura.forEach((boton) => {
 
@@ -86,7 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             mostrarMensaje(
                 "📖 Próximamente",
-                "Estamos preparando cuentos, lecturas, actividades y experiencias interactivas para LectriaSaber 2.0."
+                "Estamos preparando nuevas lecturas, cuentos y actividades para LectriaSaber 2.0."
             );
 
         });
@@ -106,8 +126,8 @@ document.addEventListener("DOMContentLoaded", () => {
         boton.addEventListener("click", () => {
 
             mostrarMensaje(
-                "🎯 Ruta Pruebas Saber",
-                "Esta sección estará disponible próximamente con actividades de práctica, comprensión lectora y preguntas tipo Saber."
+                "🎯 Pruebas Saber",
+                "Esta sección estará disponible próximamente con actividades y preguntas de práctica."
             );
 
         });
@@ -126,7 +146,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         boton.addEventListener("click", () => {
 
-            const tarjeta = boton.closest(".plan-card");
+            const tarjeta =
+                boton.closest(".plan-card");
 
             if (!tarjeta) return;
 
@@ -139,28 +160,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 mostrarMensaje(
                     "🆓 Plan Gratis",
-                    "Puedes comenzar a explorar LectriaSaber 2.0 y descubrir sus recursos educativos."
+                    "Puedes comenzar a explorar LectriaSaber 2.0 y conocer sus recursos educativos."
                 );
 
-            } else if (titulo === "Plus") {
+            } else {
 
                 mostrarMensaje(
-                    "⭐ Plan Plus",
-                    "El plan Plus estará disponible próximamente con más actividades, lecturas y experiencias interactivas."
-                );
-
-            } else if (titulo === "Docente") {
-
-                mostrarMensaje(
-                    "👨‍🏫 Plan Docente",
-                    "El espacio docente está en preparación para ofrecer herramientas de acompañamiento y seguimiento."
-                );
-
-            } else if (titulo === "Institucional") {
-
-                mostrarMensaje(
-                    "🏫 Plan Institucional",
-                    "Próximamente podrás conocer las opciones para instituciones educativas."
+                    "⭐ Próximamente",
+                    `El plan ${titulo} estará disponible próximamente.`
                 );
 
             }
@@ -175,25 +182,29 @@ document.addEventListener("DOMContentLoaded", () => {
     ================================================= */
 
     const botonDocente =
-        document.querySelector(".teacher-info a");
+        document.querySelector(
+            '.teacher-info a[href="#planes"]'
+        );
 
     if (botonDocente) {
 
-        botonDocente.addEventListener("click", (evento) => {
+        botonDocente.addEventListener("click", () => {
 
-            evento.preventDefault();
+            setTimeout(() => {
 
-            const planes =
-                document.getElementById("planes");
+                const planes =
+                    document.getElementById("planes");
 
-            if (planes) {
+                if (planes) {
 
-                planes.scrollIntoView({
-                    behavior: "smooth",
-                    block: "start"
-                });
+                    planes.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start"
+                    });
 
-            }
+                }
+
+            }, 50);
 
         });
 
@@ -208,8 +219,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         cerrarMensaje();
 
-
-        const modal = document.createElement("div");
+        const modal =
+            document.createElement("div");
 
         modal.className = "ls-modal";
 
@@ -221,7 +232,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 class="ls-modal-box"
                 role="dialog"
                 aria-modal="true"
-                aria-labelledby="ls-modal-title">
+                aria-label="${titulo}"
+            >
 
                 <button
                     class="ls-modal-close"
@@ -233,7 +245,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     📚
                 </div>
 
-                <h2 id="ls-modal-title">
+                <h2>
                     ${titulo}
                 </h2>
 
@@ -248,7 +260,6 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
 
         `;
-
 
         document.body.appendChild(modal);
 
@@ -278,7 +289,10 @@ document.addEventListener("DOMContentLoaded", () => {
             cerrarMensaje
         );
 
-        cerrarBtn.focus();
+
+        setTimeout(() => {
+            entendidoBtn.focus();
+        }, 50);
 
     }
 
@@ -300,15 +314,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =================================================
-       TECLA ESC
+       CERRAR CON ESC
     ================================================= */
 
     document.addEventListener("keydown", (evento) => {
 
         if (evento.key === "Escape") {
-
             cerrarMensaje();
-
         }
 
     });
@@ -320,7 +332,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const elementosAnimados =
         document.querySelectorAll(
-            ".info-card, .level-card, .skill-card, .saber-card, .plan-card, .teacher-box"
+            ".info-card, " +
+            ".level-card, " +
+            ".skill-card, " +
+            ".saber-card, " +
+            ".plan-card, " +
+            ".teacher-box"
         );
 
 
@@ -355,7 +372,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         elementosAnimados.forEach((elemento) => {
 
-            elemento.classList.add("ls-hidden");
+            elemento.classList.add(
+                "ls-hidden"
+            );
 
             observador.observe(elemento);
 
@@ -368,7 +387,8 @@ document.addEventListener("DOMContentLoaded", () => {
        ESTILOS DEL MODAL Y ANIMACIONES
     ================================================= */
 
-    const estilos = document.createElement("style");
+    const estilos =
+        document.createElement("style");
 
     estilos.textContent = `
 
@@ -381,7 +401,9 @@ document.addEventListener("DOMContentLoaded", () => {
         .ls-modal-overlay {
             position: absolute;
             inset: 0;
+
             background: rgba(15, 23, 42, 0.65);
+
             backdrop-filter: blur(4px);
         }
 
@@ -426,27 +448,21 @@ document.addEventListener("DOMContentLoaded", () => {
             color: #2563EB;
 
             font-size: 18px;
-
-            cursor: pointer;
         }
 
         .ls-modal-icon {
             font-size: 50px;
-
             margin-bottom: 10px;
         }
 
         .ls-modal-box h2 {
             margin-bottom: 10px;
-
             color: #173B8F;
         }
 
         .ls-modal-box p {
             margin-bottom: 25px;
-
             color: #64748B;
-
             line-height: 1.7;
         }
 
@@ -482,7 +498,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         .ls-visible {
             opacity: 1;
-
             transform: translateY(0);
         }
 
@@ -500,20 +515,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 transform:
                     translateY(0)
                     scale(1);
-            }
-
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-
-            .ls-hidden {
-                opacity: 1;
-                transform: none;
-                transition: none;
-            }
-
-            .ls-modal-box {
-                animation: none;
             }
 
         }
