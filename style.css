@@ -2525,3 +2525,238 @@ a {
     }
 
 }
+/* =====================================================
+   CORRECCIÓN VISUAL — DOCENTES
+===================================================== */
+
+section.teachers {
+    padding: 80px 0 !important;
+    background: #f2fcf8 !important;
+}
+
+section.teachers .teacher-box {
+    display: grid !important;
+    grid-template-columns: 1.5fr 0.8fr !important;
+    gap: 40px !important;
+    align-items: center !important;
+
+    padding: 45px !important;
+
+    background: #ffffff !important;
+
+    border: 2px solid #dcefe7 !important;
+    border-radius: 28px !important;
+
+    box-shadow: 0 15px 35px rgba(17, 150, 111, 0.12) !important;
+}
+
+
+/* TEXTO */
+
+section.teachers .teacher-info {
+    width: 100%;
+}
+
+section.teachers .section-tag {
+    display: inline-block !important;
+
+    padding: 9px 16px !important;
+
+    border-radius: 50px !important;
+
+    background: #dff8ee !important;
+
+    color: #11966f !important;
+
+    font-size: 13px !important;
+    font-weight: 800 !important;
+}
+
+
+section.teachers .teacher-info h2 {
+    margin: 18px 0 15px !important;
+
+    color: #172033 !important;
+
+    font-size: 36px !important;
+    line-height: 1.15 !important;
+}
+
+
+section.teachers .teacher-info > p {
+    max-width: 650px !important;
+
+    margin-bottom: 25px !important;
+
+    color: #64748b !important;
+
+    font-size: 16px !important;
+    line-height: 1.7 !important;
+}
+
+
+/* =====================================================
+   CARACTERÍSTICAS
+===================================================== */
+
+section.teachers .teacher-features {
+    display: grid !important;
+
+    grid-template-columns: repeat(4, 1fr) !important;
+
+    gap: 12px !important;
+
+    margin: 25px 0 !important;
+}
+
+
+section.teachers .teacher-features div {
+    display: flex !important;
+
+    flex-direction: column !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    gap: 7px !important;
+
+    min-height: 90px !important;
+
+    padding: 12px !important;
+
+    background: #f7fffb !important;
+
+    border: 1px solid #dcefe7 !important;
+
+    border-radius: 15px !important;
+
+    text-align: center !important;
+}
+
+
+section.teachers .teacher-features span {
+    display: block !important;
+
+    font-size: 27px !important;
+}
+
+
+section.teachers .teacher-features strong {
+    display: block !important;
+
+    color: #172033 !important;
+
+    font-size: 13px !important;
+}
+
+
+/* =====================================================
+   BOTÓN DOCENTES
+===================================================== */
+
+section.teachers .btn {
+    display: inline-flex !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    padding: 13px 22px !important;
+
+    border-radius: 12px !important;
+
+    background: #20c997 !important;
+
+    color: #ffffff !important;
+
+    text-decoration: none !important;
+
+    font-weight: 800 !important;
+}
+
+
+section.teachers .btn:hover {
+    background: #11966f !important;
+}
+
+
+/* =====================================================
+   TARJETA DE LETRÍN
+===================================================== */
+
+section.teachers .teacher-mascot {
+    display: flex !important;
+
+    flex-direction: column !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    min-height: 280px !important;
+
+    padding: 30px !important;
+
+    background: #dff8ee !important;
+
+    border: 2px solid #20c997 !important;
+
+    border-radius: 24px !important;
+
+    text-align: center !important;
+}
+
+
+section.teachers .teacher-icon {
+    display: block !important;
+
+    margin-bottom: 15px !important;
+
+    font-size: 75px !important;
+}
+
+
+section.teachers .teacher-mascot h3 {
+    margin: 0 0 12px !important;
+
+    color: #11966f !important;
+
+    font-size: 21px !important;
+}
+
+
+section.teachers .teacher-mascot p {
+    margin: 0 !important;
+
+    color: #64748b !important;
+
+    font-size: 14px !important;
+
+    line-height: 1.6 !important;
+}
+
+
+/* =====================================================
+   CELULARES
+===================================================== */
+
+@media (max-width: 850px) {
+
+    section.teachers .teacher-box {
+        grid-template-columns: 1fr !important;
+
+        padding: 30px 20px !important;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    section.teachers .teacher-features {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+
+    section.teachers .teacher-info h2 {
+        font-size: 28px !important;
+    }
+
+}
