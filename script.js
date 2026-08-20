@@ -539,3 +539,46 @@ if (btnEscena2) {
     });
 
 }
+/* =====================================================
+   LECTURA INTERACTIVA - PRIMERO
+===================================================== */
+
+const explorarPrimero =
+    document.getElementById("explorarPrimero");
+
+const lecturaPrimero =
+    document.getElementById("lecturaPrimero");
+
+const btnEscena2 =
+    document.getElementById("btnEscena2");
+
+
+/* BOTÓN EXPLORAR DE 1° */
+
+if (explorarPrimero && lecturaPrimero) {
+
+    explorarPrimero.addEventListener("click", function () {
+
+        lecturaPrimero.hidden = false;
+
+        lecturaPrimero.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+
+    });
+
+}
+
+
+/* BOTÓN CONTINUAR */
+
+if (btnEscena2) {
+
+    btnEscena2.addEventListener("click", function () {
+
+        alert("Escena 2 próximamente");
+
+    });
+
+}
