@@ -582,3 +582,87 @@ if (btnEscena2) {
     });
 
 }
+/* =====================================================
+   COMPRENSIÓN
+===================================================== */
+
+const comprension =
+    document.getElementById("comprension");
+
+const opciones =
+    document.querySelectorAll(".opcion");
+
+const resultadoPregunta =
+    document.getElementById("resultadoPregunta");
+
+const felicitaciones =
+    document.getElementById("felicitaciones");
+
+
+if (btnComprension && comprension) {
+
+    btnComprension.addEventListener("click", function () {
+
+        escena3.hidden = true;
+
+        comprension.hidden = false;
+
+        comprension.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
+
+    });
+
+}
+
+
+/* =====================================================
+   RESPUESTA DE COMPRENSIÓN
+===================================================== */
+
+opciones.forEach(function (opcion) {
+
+    opcion.addEventListener("click", function () {
+
+        const esCorrecta =
+            opcion.dataset.correcta === "true";
+
+        if (esCorrecta) {
+
+            resultadoPregunta.textContent =
+                "✅ ¡Muy bien! Esa es la respuesta correcta.";
+
+            resultadoPregunta.className =
+                "resultado-pregunta correcto";
+
+            opciones.forEach(function (boton) {
+                boton.disabled = true;
+            });
+
+            setTimeout(function () {
+
+                comprension.hidden = true;
+
+                felicitaciones.hidden = false;
+
+                felicitaciones.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center"
+                });
+
+            }, 1000);
+
+        } else {
+
+            resultadoPregunta.textContent =
+                "💡 Inténtalo nuevamente. Busca la pista en la Escena 3.";
+
+            resultadoPregunta.className =
+                "resultado-pregunta incorrecto";
+
+        }
+
+    });
+
+});
