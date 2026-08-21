@@ -546,66 +546,9 @@
 
         </section>
 
-<!-- =====================================================
-     MÓDULO LECTURA 1° - LETRÍN
-====================================================== -->
-
-<section class="lectura-1" id="lecturaPrimero">
-
-    <div class="lectura-card">
-
-        <div class="lectura-progreso">
-            <span class="activo">1</span>
-            <span>2</span>
-            <span>3</span>
-            <span>🧠</span>
-            <span>🏆</span>
-        </div>
-
-        <div class="personaje">
-            🦊
-        </div>
-
-        <div class="escena-contenido">
-
-            <span class="escena-numero">
-                ESCENA 1
-            </span>
-
-            <h2>
-                Una palabra misteriosa
-            </h2>
-
-            <p>
-                🦊 <strong>Letrín encontró una palabra que no conocía.</strong>
-            </p>
-
-            <p>
-                Decidió leerla despacito para descubrir su significado.
-            </p>
-
-            <div class="palabra-misteriosa">
-                🌟 <span>BRILLANTE</span> 🌟
-            </div>
-
-            <p class="pregunta-guia">
-                ¿Qué crees que significa esta palabra?
-            </p>
-
-        </div>
-
-        <button
-            class="btn-siguiente"
-            id="btnEscena2">
-            Continuar ➜
-        </button>
-
-    </div>
-
-</section>
-        <!-- =================================================
+        <!-- =====================================================
              LECTURA INTERACTIVA - 1°
-        ================================================== -->
+        ====================================================== -->
 
         <section
             class="lectura-interactiva"
@@ -624,45 +567,256 @@
 
                 </div>
 
+
                 <div class="lectura-personaje">
                     🦊
                 </div>
 
-                <span class="escena-numero">
-                    ESCENA 1
-                </span>
 
-                <h2>
-                    Una palabra misteriosa
-                </h2>
+                <!-- ==============================
+                     ESCENA 1
+                =============================== -->
 
-                <p>
-                    🦊 <strong>
-                        Letrín encontró una palabra que no conocía.
-                    </strong>
-                </p>
+                <div id="escena1">
 
-                <p>
-                    Decidió leerla despacito para descubrir
-                    su significado.
-                </p>
+                    <span class="escena-numero">
+                        ESCENA 1
+                    </span>
 
-                <div class="palabra-misteriosa">
-                    🌟 BRILLANTE 🌟
+                    <h2>
+                        Una palabra misteriosa
+                    </h2>
+
+                    <p>
+                        🦊 <strong>
+                            Letrín encontró una palabra
+                            que no conocía.
+                        </strong>
+                    </p>
+
+                    <p>
+                        Decidió leerla despacito para
+                        descubrir su significado.
+                    </p>
+
+                    <div class="palabra-misteriosa">
+                        🌟 BRILLANTE 🌟
+                    </div>
+
+                    <p class="pregunta-guia">
+                        ¿Qué crees que significa esta palabra?
+                    </p>
+
+                    <button
+                        type="button"
+                        class="btn-siguiente"
+                        id="btnEscena2">
+
+                        Continuar ➜
+
+                    </button>
+
                 </div>
 
-                <p class="pregunta-guia">
-                    ¿Qué crees que significa esta palabra?
-                </p>
 
-                <button
-                    type="button"
-                    class="btn-siguiente"
-                    id="btnEscena2">
+                <!-- ==============================
+                     ESCENA 2
+                =============================== -->
 
-                    Continuar ➜
+                <div
+                    id="escena2"
+                    hidden>
 
-                </button>
+                    <span class="escena-numero">
+                        ESCENA 2
+                    </span>
+
+                    <h2>
+                        Letrín lee despacito
+                    </h2>
+
+                    <p>
+                        Letrín miró nuevamente la palabra.
+                    </p>
+
+                    <p>
+                        La leyó con calma y pensó en las
+                        pistas que podía encontrar.
+                    </p>
+
+                    <div class="palabra-misteriosa">
+                        🌟 BRILLANTE 🌟
+                    </div>
+
+                    <p class="pregunta-guia">
+                        Si algo es brillante,
+                        ¿cómo crees que es?
+                    </p>
+
+                    <button
+                        type="button"
+                        class="btn-siguiente"
+                        id="btnEscena3">
+
+                        Descubrir ➜
+
+                    </button>
+
+                </div>
+
+
+                <!-- ==============================
+                     ESCENA 3
+                =============================== -->
+
+                <div
+                    id="escena3"
+                    hidden>
+
+                    <span class="escena-numero">
+                        ESCENA 3
+                    </span>
+
+                    <h2>
+                        Letrín descubrió el significado
+                    </h2>
+
+                    <p>
+                        Letrín pensó en todo lo que había leído.
+                    </p>
+
+                    <p>
+                        Entonces comprendió que algo
+                        <strong>brillante</strong> es algo que
+                        <strong>produce o refleja mucha luz.</strong>
+                    </p>
+
+                    <div class="palabra-misteriosa">
+                        💡 BRILLANTE
+                    </div>
+
+                    <p class="pregunta-guia">
+                        ¡Letrín ya descubrió una palabra nueva!
+                    </p>
+
+                    <button
+                        type="button"
+                        class="btn-siguiente"
+                        id="btnComprension">
+
+                        Comprobar lo aprendido ➜
+
+                    </button>
+
+                </div>
+
+
+                <!-- ==============================
+                     COMPRENSIÓN
+                =============================== -->
+
+                <div
+                    id="comprension"
+                    hidden>
+
+                    <span class="escena-numero">
+                        🧠 COMPRENSIÓN
+                    </span>
+
+                    <h2>
+                        ¿Qué aprendió Letrín?
+                    </h2>
+
+                    <p>
+                        Lee la pregunta y selecciona
+                        la respuesta correcta.
+                    </p>
+
+                    <div class="pregunta-card">
+
+                        <h3>
+                            ¿Qué significa la palabra
+                            “brillante”?
+                        </h3>
+
+                        <div class="opciones">
+
+                            <button
+                                type="button"
+                                class="opcion"
+                                data-correcta="false">
+
+                                🌧️ Algo que está mojado.
+
+                            </button>
+
+                            <button
+                                type="button"
+                                class="opcion"
+                                data-correcta="true">
+
+                                💡 Algo que produce o refleja
+                                mucha luz.
+
+                            </button>
+
+                            <button
+                                type="button"
+                                class="opcion"
+                                data-correcta="false">
+
+                                🌱 Algo que está creciendo.
+
+                            </button>
+
+                        </div>
+
+                        <p
+                            class="resultado-pregunta"
+                            id="resultadoPregunta">
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ==============================
+                     FELICITACIONES
+                =============================== -->
+
+                <div
+                    id="felicitaciones"
+                    hidden>
+
+                    <span class="escena-numero">
+                        🏆 ¡LO LOGRASTE!
+                    </span>
+
+                    <h2>
+                        ¡Felicitaciones!
+                    </h2>
+
+                    <p>
+                        Letrín está muy orgulloso de ti.
+                    </p>
+
+                    <p>
+                        Aprendiste el significado de una
+                        palabra nueva y comprendiste
+                        lo que leíste.
+                    </p>
+
+                    <div class="felicitaciones-iconos">
+                        ⭐ 📖 ⭐
+                    </div>
+
+                    <p class="mensaje-final">
+                        ¡Cada palabra que aprendes te ayuda
+                        a comprender mejor el mundo!
+                    </p>
+
+                </div>
 
             </div>
 
