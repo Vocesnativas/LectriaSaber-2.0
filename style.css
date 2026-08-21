@@ -3073,3 +3073,232 @@ section.teachers .teacher-mascot p {
     }
 
 }
+/* =====================================================
+   LECTURA INTERACTIVA 1° - ESTILOS
+===================================================== */
+
+.lectura-interactiva {
+    padding: 70px 20px;
+    background: #f5f8fc;
+}
+
+.lectura-card {
+    width: min(760px, 100%);
+    margin: 0 auto;
+    padding: 40px 30px;
+    background: #ffffff;
+    border-radius: 28px;
+    text-align: center;
+    box-shadow: 0 15px 40px rgba(23, 32, 51, 0.12);
+}
+
+.lectura-progreso {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+.lectura-progreso span {
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #e8edf5;
+    color: #657080;
+    font-weight: bold;
+}
+
+.lectura-progreso span.activo {
+    background: #4f46e5;
+    color: white;
+}
+
+.lectura-personaje {
+    font-size: 58px;
+    margin-bottom: 10px;
+}
+
+.escena-numero {
+    display: inline-block;
+    padding: 8px 16px;
+    margin-bottom: 15px;
+    border-radius: 20px;
+    background: #eef2ff;
+    color: #4f46e5;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.lectura-card h2 {
+    margin-bottom: 18px;
+    color: #172033;
+    font-size: 30px;
+}
+
+.lectura-card p {
+    color: #465166;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.palabra-misteriosa {
+    max-width: 430px;
+    margin: 28px auto;
+    padding: 22px;
+    border-radius: 20px;
+    background: #fff7d6;
+    color: #b77900;
+    font-size: 30px;
+    font-weight: 800;
+}
+
+.pregunta-guia {
+    margin-top: 25px;
+    font-weight: bold;
+}
+
+.btn-siguiente {
+    margin-top: 25px;
+    padding: 14px 30px;
+    border: none;
+    border-radius: 14px;
+    background: #4f46e5;
+    color: white;
+    font-size: 17px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.btn-siguiente:hover {
+    transform: translateY(-2px);
+}
+
+
+/* =====================================================
+   COMPRENSIÓN
+===================================================== */
+
+#comprension {
+    margin-top: 10px;
+}
+
+.pregunta-card {
+    margin: 25px auto 0;
+    max-width: 620px;
+    padding: 25px;
+    border-radius: 22px;
+    background: #f8fafc;
+}
+
+.pregunta-card h3 {
+    margin-bottom: 22px;
+    color: #172033;
+    font-size: 21px;
+}
+
+.opciones {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.opcion {
+    width: 100%;
+    padding: 16px 18px;
+    border: 2px solid #e2e8f0;
+    border-radius: 14px;
+    background: white;
+    color: #172033;
+    font-size: 16px;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.opcion:hover {
+    border-color: #4f46e5;
+    background: #eef2ff;
+    transform: translateY(-2px);
+}
+
+.opcion:disabled {
+    cursor: default;
+    opacity: 0.75;
+}
+
+.resultado-pregunta {
+    margin-top: 20px;
+    font-weight: 800;
+}
+
+.resultado-pregunta.correcto {
+    color: #15803d;
+}
+
+.resultado-pregunta.incorrecto {
+    color: #b45309;
+}
+
+
+/* =====================================================
+   FELICITACIONES
+===================================================== */
+
+#felicitaciones {
+    padding: 20px 10px;
+}
+
+.felicitaciones-iconos {
+    margin: 25px 0;
+    font-size: 40px;
+}
+
+.mensaje-final {
+    max-width: 550px;
+    margin: 0 auto;
+    font-weight: 700;
+}
+
+
+/* =====================================================
+   MÓVILES
+===================================================== */
+
+@media (max-width: 600px) {
+
+    .lectura-interactiva {
+        padding: 45px 15px;
+    }
+
+    .lectura-card {
+        padding: 30px 18px;
+    }
+
+    .lectura-card h2 {
+        font-size: 25px;
+    }
+
+    .lectura-card p {
+        font-size: 16px;
+    }
+
+    .palabra-misteriosa {
+        font-size: 24px;
+    }
+
+    .lectura-progreso {
+        gap: 7px;
+    }
+
+    .lectura-progreso span {
+        width: 34px;
+        height: 34px;
+        font-size: 13px;
+    }
+
+}
